@@ -12,13 +12,16 @@ api = restful.Api(app)
 def index():
 	return render_template("index.html")
 
+@app.route("/status")
+def status():
+	return render_template("status.html")
 
 #Rest Api
-class HelloWorld(restful.Resource):
+class RestfulStatus(restful.Resource):
     def get(self):
-        return {'hello': 'world'}
+        return {'status': 'good'}
 
-api.add_resource(HelloWorld, '/api')
+api.add_resource(RestfulStatus, '/status/api')
 
 if __name__ == '__main__':
 	app.run()

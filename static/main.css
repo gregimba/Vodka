@@ -14,3 +14,7 @@ div  {
   font-family: 'Garamond', 'Georgia', serif;
   text-align: center;
 }
+ul   {
+  text-align: center;
+  list-style: none;
+}
