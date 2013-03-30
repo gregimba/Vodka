@@ -9,6 +9,7 @@ It's super easy to get started with Vodka:
 
 	git clone https://github.com/gregimba/Vodka.git myapp
 	cd myapp
+	source setup.sh
 
 
 Check out my blog post about why I built [Vodka](http://www.gregimba.com/vodka)
