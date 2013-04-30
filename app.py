@@ -1,16 +1,14 @@
 #Flask Imports
-from flask import Flask
-from flask import render_template
-from flask.ext.sqlalchemy import SQLAlchemy
-
-#Blueprint imports
-from controllers.page import page
+from flask import Flask, render_template
+from pony.orm import *
 
 app = Flask(__name__)
 app.config.from_pyfile('config.cfg')
-db = SQLAlchemy(app)
+db = Database('sqlite', ':memory:')
 
-app.register_blueprint(page)
+#Blueprint imports
+from controllers.page import index
+app.register_blueprint(index)
 
 if __name__ == '__main__':
 	app.run()
