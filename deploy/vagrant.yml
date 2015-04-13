@@ -1,0 +1,40 @@
+---
+- hosts: all
+  sudo: true
+  tasks:
+    - name: update apt cache
+      apt: update_cache=yes
+
+    - name: upgrade packages
+      apt: upgrade=dist
+
+    - name: install packages
+      apt: name={{ item }} state=present update_cache=yes
+      with_items:
+       - nginx
+       - git
+       - libpq-dev 
+       - python-dev
+       - postgresql 
+       - postgresql-contrib
+       - python-virtualenv
+       - gunicorn
+       - supervisor 
+
+    - name: install  pip
+      pip: name={{ item }}
+      with_items:
+        - flask
+        - peewee
+
+    - name: copy nginx config
+      copy: src=files/nginx.conf dest=/etc/nginx/sites-enabled/default
+
+    - name: copy supervisor config
+      copy: src=files/supervisor.conf dest=/etc/supervisor/conf.d/vodka.conf
+
+    - name: restart nginx
+      service: name=nginx state=restarted
+
+    - name: update supervisor
+      shell: supervisorctl update
