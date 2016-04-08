@@ -1,5 +1,3 @@
-vagrant up
-vagrant provision
 tput setaf 4
 echo '
 
