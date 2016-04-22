@@ -1,11 +1,22 @@
-from flask import Flask, render_template
+from flask import *
+import records
 
 app = Flask(__name__)
-app.config.from_pyfile('config.cfg')
 
-#Blueprint imports
-from controllers.page import index
-app.register_blueprint(index)
+# Load default config and override config from an environment variable
+app.config.update(dict(
+    DEBUG=True,
+    SECRET_KEY='development key',
+    USERNAME='admin',
+    PASSWORD='default'
+))
 
-if __name__ == '__main__':
+app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+if __name__ == "__main__":
 	app.run()

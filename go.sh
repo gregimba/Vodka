@@ -13,5 +13,7 @@ $$  \ /$$//$$$$$$  |$$ |_/$$/ /$$$$$$$ | $$$$$$  |
 
 '
 tput setaf 2
-echo '            check localhost:8080'
+echo '            check localhost:5000'
 tput sgr0
+
+python app.py
