@@ -13,6 +13,10 @@ app.config.update(dict(
 
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
+if app.debug == True:
+	db = records.Database('sqlite:///development.db')
+else:
+	db = records.Database('sqlite:///production.db')
 
 @app.route("/")
 def index():
