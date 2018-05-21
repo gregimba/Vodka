@@ -6,10 +6,6 @@
   <body>
   	<div class="nav">
   	<ul>
-  	{% if session.logged_in %}
-  	<li><a href="{{ url_for('logout') }}">log out</a></li>
-  	{% endif %}
-  	<li><a href="{{ url_for('about') }}">about</a></li>
   	</ul>
   	</div>
   	{% for message in get_flashed_messages() %}
